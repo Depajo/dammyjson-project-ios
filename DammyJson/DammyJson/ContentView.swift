@@ -10,12 +10,37 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            UserList()
         }
-        .padding()
+    }
+}
+
+struct UserList: View {
+    @State var users: Users?
+    var fetch = FetchTools()
+    var body: some View {
+        
+        VStack {
+            List {
+                if let usersData: Users = users {
+                    ForEach(usersData.users, id: \.id) { user in
+                        Text("\(user.firstName) \(user.lastName)")
+                            .padding(0)
+                        
+                    }
+                    
+                } else {
+                    ProgressView()
+                }
+            }
+            .padding(0)
+            .onAppear() {
+                fetch.getData(url: URLComponents(string: "https://dummyjson.com/users?limit=0")!) { data in
+                    users = data
+                    print(data)
+                }
+            }
+        }
     }
 }
 

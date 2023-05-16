@@ -8,6 +8,6 @@
 import Foundation
 
 struct Users: Codable {
-    var user: [User]
+    var users: [User]
 }
 
