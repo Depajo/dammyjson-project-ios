@@ -40,7 +40,7 @@ struct UserList: View {
             List {
                 if let usersData: Users = users {
                     ForEach(usersData.users, id: \.id) { user in
-                        Text("\(user.firstName) \(user.lastName)")
+                        Text("\(user.id) \(user.firstName) \(user.lastName)")
                             .padding(0)
                         
                     }
@@ -70,8 +70,17 @@ struct SearchBar: View {
         TextField(placeholder, text: $searchText)
             .onChange(of: searchText) { newText in
                 let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-                print(text)
-                if let url = URLComponents(string: "https://dummyjson.com/users/search?q=\(text)") {
+                
+                var selectedUrl: URLComponents?
+                
+                if (searchText != "") {
+                    selectedUrl = URLComponents(string: "https://dummyjson.com/users/search?q=\(text)")
+                } else {
+                    selectedUrl = URLComponents(string: "https://dummyjson.com/users?limit=0")
+                }
+                
+                if let url = selectedUrl {
+                    
                     fetch.getData(url: url) { data in
                         users = data
                         print(data)
