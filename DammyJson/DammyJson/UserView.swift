@@ -13,17 +13,27 @@ struct UserView: View {
     var body: some View {
         
         if (user != nil) {
-            VStack {
-                Spacer()
-                TextAreaWithLabel(label: "Name:", text: "\(user.firstName) \(user.firstName)")
-                TextAreaWithLabel(label: "Phone:", text: "\(user.phone)")
-                TextAreaWithLabel(label: "Email:", text: "\(user.email)")
-                TextAreaWithLabel(label: "Age:", text: "\(user.age)")
-                TextAreaWithLabel(label: "Username:", text: "\(user.username)")
-                TextAreaWithLabel(label: "Password:", text: "\(user.password)")
-                Spacer()
+            NavigationStack {
+                VStack {
+                    Spacer()
+                    TextAreaWithLabel(label: "Name:", text: "\(user.firstName) \(user.firstName)")
+                    TextAreaWithLabel(label: "Phone:", text: "\(user.phone)")
+                    TextAreaWithLabel(label: "Email:", text: "\(user.email)")
+                    TextAreaWithLabel(label: "Age:", text: "\(user.age)")
+                    TextAreaWithLabel(label: "Username:", text: "\(user.username)")
+                    TextAreaWithLabel(label: "Password:", text: "\(user.password)")
+                        .navigationTitle("User")
+                        .navigationBarItems(trailing:
+                                 Button (action: {
+
+                                 }) {
+                                     Text("Edit")
+                                 }
+                             )
+                    Spacer()
+                }
+                .background(Color(colorScheme == .dark ? UIColor.black : UIColor.systemGray5))
             }
-            .background(Color(colorScheme == .dark ? UIColor.black : UIColor.systemGray5))
         } else {
             ProgressView()
         }

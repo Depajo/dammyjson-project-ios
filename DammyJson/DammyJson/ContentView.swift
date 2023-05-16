@@ -17,6 +17,14 @@ struct ContentView: View {
                 SearchBar(users: $users, searchText: $searchText, placeholder: "Hae")
                 UserListIsEmpty(users: $users)
                 UserList(users: $users)
+                    .navigationTitle("Users")
+                    .navigationBarItems(trailing:
+                             Button (action: {
+
+                             }) {
+                                 Image(systemName: "plus")
+                             }
+                         )
             }
         }
     }
@@ -44,7 +52,8 @@ struct UserList: View {
                     ForEach(usersData.users, id: \.id) { user in
                         NavigationLink(destination: UserView(user: user)) {
                             Text("\(user.firstName) \(user.lastName)")
-                                .padding(0)
+                                .padding(.vertical, 10)
+//                                .font(.system(size: 20))
                         }
                         
                     }
@@ -95,7 +104,7 @@ struct SearchBar: View {
             .padding(10)
             .font(.system(size: 20))
             .frame(alignment: .center)
-            .background(RoundedRectangle(cornerRadius: 20) .stroke(Color.gray))
+            .background(Color(UIColor.systemGray6).cornerRadius(20))
             .padding(10)
         
         
