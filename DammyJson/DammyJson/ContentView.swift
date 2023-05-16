@@ -13,9 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            SearchBar(users: $users, searchText: $searchText, placeholder: "Hae")
-            UserListIsEmpty(users: $users)
-            UserList(users: $users)
+            NavigationStack {
+                SearchBar(users: $users, searchText: $searchText, placeholder: "Hae")
+                UserListIsEmpty(users: $users)
+                UserList(users: $users)
+            }
         }
     }
 }
@@ -40,12 +42,15 @@ struct UserList: View {
             List {
                 if let usersData: Users = users {
                     ForEach(usersData.users, id: \.id) { user in
-                        Text("\(user.id) \(user.firstName) \(user.lastName)")
-                            .padding(0)
+                        NavigationLink(destination: UserView(user: user)) {
+                            Text("\(user.firstName) \(user.lastName)")
+                                .padding(0)
+                        }
                         
                     }
                 } else {
                     ProgressView()
+                        .frame(maxWidth: .infinity)
                 }
             }
             .padding(0)
