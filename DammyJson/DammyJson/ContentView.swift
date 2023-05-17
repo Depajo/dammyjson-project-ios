@@ -19,11 +19,9 @@ struct ContentView: View {
                 UserList(users: $users)
                     .navigationTitle("Users")
                     .navigationBarItems(trailing:
-                             Button (action: {
-
-                             }) {
-                                 Image(systemName: "plus")
-                             }
+                            NavigationLink(destination: AddUserView()) {
+                                Image(systemName: "plus")
+                            }
                          )
             }
         }
