@@ -24,46 +24,18 @@ struct UserView: View {
                     TextAreaWithLabel(label: "Password:", text: "\(user.password)")
                         .navigationTitle("User")
                         .navigationBarItems(trailing:
-                                 Button (action: {
-
-                                 }) {
-                                     Text("Edit")
-                                 }
+                                NavigationLink(destination: EditUserView(user: user)) {
+                                    Text("Edit")
+                                }
                              )
+                     
                     Spacer()
                 }
-                .background(Color(colorScheme == .dark ? UIColor.black : UIColor.systemGray5))
+                .background(Color(colorScheme == .dark ? UIColor.black : UIColor.systemGray6))
             }
         } else {
             ProgressView()
         }
-        
-    }
-}
-
-struct TextAreaWithLabel: View {
-    @Environment(\.colorScheme) var colorScheme
-    
-    var label: String
-    var text: String
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-        
-            Text(label)
-                .fontWeight(.bold)
-                .padding(2)
-            
-            Text(text)
-                .padding(2)
-        
-        
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(10)
-        .background(Color(colorScheme == .dark ? UIColor.systemGray6 : UIColor.white).cornerRadius(10))
-        .padding(10)
-        
     }
 }
 
