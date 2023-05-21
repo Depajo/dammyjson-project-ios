@@ -67,7 +67,7 @@ struct UserList: View {
                 if let url = URLComponents(string: "https://dummyjson.com/users?limit=0") {
                     fetch.getData(url: url) { data in
                         users = data
-                        print(data)
+//                        print(data)
                     }
                 }
             }

@@ -16,6 +16,9 @@
 		FE06AEA82A1372E900F3861C /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE06AEA72A1372E900F3861C /* Users.swift */; };
 		FE06AEAA2A1376E700F3861C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE06AEA92A1376E700F3861C /* User.swift */; };
 		FE06AEAC2A13E10B00F3861C /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE06AEAB2A13E10B00F3861C /* UserView.swift */; };
+		FE90716A2A14FE5300782F5F /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9071692A14FE5300782F5F /* EditUserView.swift */; };
+		FE90716C2A14FE6A00782F5F /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90716B2A14FE6A00782F5F /* AddUserView.swift */; };
+		FE90716E2A15055800782F5F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90716D2A15055800782F5F /* Components.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		FE06AEA72A1372E900F3861C /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		FE06AEA92A1376E700F3861C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FE06AEAB2A13E10B00F3861C /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		FE9071692A14FE5300782F5F /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
+		FE90716B2A14FE6A00782F5F /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
+		FE90716D2A15055800782F5F /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,9 @@
 				FE06AEA72A1372E900F3861C /* Users.swift */,
 				FE06AEA92A1376E700F3861C /* User.swift */,
 				FE06AEAB2A13E10B00F3861C /* UserView.swift */,
+				FE9071692A14FE5300782F5F /* EditUserView.swift */,
+				FE90716B2A14FE6A00782F5F /* AddUserView.swift */,
+				FE90716D2A15055800782F5F /* Components.swift */,
 			);
 			path = DammyJson;
 			sourceTree = "<group>";
@@ -161,8 +170,11 @@
 				FE06AEAC2A13E10B00F3861C /* UserView.swift in Sources */,
 				FE06AE952A136D7B00F3861C /* ContentView.swift in Sources */,
 				FE06AEA12A13710700F3861C /* FetchTools.swift in Sources */,
+				FE90716A2A14FE5300782F5F /* EditUserView.swift in Sources */,
 				FE06AEAA2A1376E700F3861C /* User.swift in Sources */,
 				FE06AE932A136D7B00F3861C /* DammyJsonApp.swift in Sources */,
+				FE90716E2A15055800782F5F /* Components.swift in Sources */,
+				FE90716C2A14FE6A00782F5F /* AddUserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
