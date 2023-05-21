@@ -21,4 +21,32 @@ class FetchTools {
             }
         }
     }
+    
+    func postData(url: URLComponents, parameters: Parameters, callback: @escaping (User) -> Void) {
+        print(parameters)
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
+            switch response.result {
+            case .success(let responseData):
+                print("Sending")
+                callback(responseData)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func putData(url: URLComponents, parameters: Parameters, callback: @escaping (User) -> Void) {
+        print(parameters)
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
+            switch response.result {
+            case .success(let responseData):
+                print("Sending")
+                callback(responseData)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
