@@ -36,7 +36,8 @@ struct EditUserView: View {
                         .keyboardType(.numberPad)
                     MyTextField(title: "Username", text: $username)
                     MyTextField(title: "Password", text: $password)
-                        
+                    
+                    DeleteButton(userId: user!.id)
                     Spacer()
                         .navigationTitle("Edit user")
                         .navigationBarItems(trailing:
@@ -81,6 +82,33 @@ func putUser(parms: Parameters, userID: Int) {
     fetch.putData(url: url, parameters: parms) { res in
         print("\(res)")
     
+    }
+}
+
+struct DeleteButton: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State var showAlert = false
+    @State var deletatinComplited = false
+    var fetch = FetchTools()
+    var userId: Int
+    var body: some View {
+        NavigationStack{
+            Button("Delete User") {
+                showAlert = true
+            }.alert(isPresented: $showAlert) {
+                Alert(title: Text("Do you want delete user?"), primaryButton: .cancel(), secondaryButton: .destructive(Text("Delete")){
+                    if let url: URLComponents = URLComponents(string: "https://dummyjson.com/users/\(userId)") {
+                        fetch.deleteData(url: url, parameters: ["id": userId]) { success in
+                            print("Delete \(success)")
+                            deletatinComplited = true
+                        }
+                    }
+                    
+                })
+                
+            }.foregroundColor(Color.red)
+            
+        }
     }
 }
 
