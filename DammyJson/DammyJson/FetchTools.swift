@@ -49,4 +49,16 @@ class FetchTools {
             }
         }
     }
+    
+    func deleteData(url: URLComponents, parameters: Parameters, callback: @escaping (User) -> Void) {
+        AF.request(url.url!, method: .delete, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
+                switch response.result {
+                case .success(let responseData):
+                    callback(responseData)
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+    }
 }
