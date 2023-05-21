@@ -18,6 +18,7 @@ struct ContentView: View {
                 UserListIsEmpty(users: $users)
                 UserList(users: $users)
                     .navigationTitle("Users")
+                    .navigationBarBackButtonHidden()
                     .navigationBarItems(trailing:
                             NavigationLink(destination: AddUserView()) {
                                 Image(systemName: "plus")

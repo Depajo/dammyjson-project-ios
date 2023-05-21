@@ -93,22 +93,27 @@ struct DeleteButton: View {
     var userId: Int
     var body: some View {
         NavigationStack{
-            Button("Delete User") {
-                showAlert = true
-            }.alert(isPresented: $showAlert) {
-                Alert(title: Text("Do you want delete user?"), primaryButton: .cancel(), secondaryButton: .destructive(Text("Delete")){
-                    if let url: URLComponents = URLComponents(string: "https://dummyjson.com/users/\(userId)") {
-                        fetch.deleteData(url: url, parameters: ["id": userId]) { success in
-                            print("Delete \(success)")
-                            deletatinComplited = true
+            VStack {
+                Button("Delete User") {
+                    showAlert = true
+                }.alert(isPresented: $showAlert) {
+                    Alert(title: Text("Do you want delete user?"), primaryButton: .cancel(), secondaryButton: .destructive(Text("Delete")){
+                        if let url: URLComponents = URLComponents(string: "https://dummyjson.com/users/\(userId)") {
+                            fetch.deleteData(url: url, parameters: ["id": userId]) { success in
+                                print("Delete \(success)")
+                                deletatinComplited = true
+                            }
                         }
-                    }
+                        
+                    })
                     
-                })
-                
-            }.foregroundColor(Color.red)
-            
+                }.foregroundColor(Color.red)
+            }
+            .navigationDestination(isPresented: $deletatinComplited) {
+                ContentView()
+            }
         }
+        
     }
 }
 
