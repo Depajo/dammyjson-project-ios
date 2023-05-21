@@ -6,10 +6,84 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct EditUserView: View {
+    var user: User?
+    @Environment(\.colorScheme) var colorScheme
+    @State var firstName: String = ""
+    @State var lastName: String = ""
+    @State var phone: String = ""
+    @State var email: String = ""
+    @State var age: String = ""
+    @State var username: String = ""
+    @State var password: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        NavigationStack {
+            VStack {
+                ScrollView{
+                    MyTextField(title: "Firstname", text: $firstName)
+                        .textContentType(.givenName)
+                        .keyboardType(.namePhonePad)
+                    MyTextField(title: "Lastname", text: $lastName)
+                        .textContentType(.givenName)
+                        .keyboardType(.namePhonePad)
+                    MyTextField(title: "Phone", text: $phone)
+                        .textContentType(.telephoneNumber)
+                        .keyboardType(.phonePad)
+                    MyTextField(title: "Email", text: $email)
+                        .textContentType(.emailAddress)
+                        .keyboardType(.emailAddress)
+                    MyTextField(title: "Age", text: $age)
+                        .keyboardType(.numberPad)
+                    MyTextField(title: "Username", text: $username)
+                        .textContentType(.username)
+                    MyTextField(title: "Password", text: $password)
+                        
+                    Spacer()
+                        .navigationTitle("Edit user")
+                        .navigationBarItems(trailing:
+                            DoneButton {
+                                print("Muokattu")
+                                putUser(parms: [firstName: firstName,
+                                                lastName: lastName,
+                                                phone: phone,
+                                                email: email,
+                                                age: "\(age)",
+                                                username: username,
+                                                password: password], userID: user!.id)
+                            
+                            }
+                            
+                        )
+                }
+            }
+            .background(Color(colorScheme == .dark ? UIColor.black : UIColor.systemGray6))
+            .onAppear() {
+                if let u = user {
+                    firstName = u.firstName
+                    lastName = u.lastName
+                    phone = u.phone
+                    email = u.email
+                    age = "\(u.age)"
+                    username = u.username
+                    password = u.password
+                }
+                
+            }
+        }
+    }
+}
+
+func putUser(parms: Parameters, userID: Int) {
+    let fetch = FetchTools()
+    let url = URLComponents(string: "https://dummyjson.com/users/\(userID)")!
+    
+    fetch.putData(url: url, parameters: parms) { res in
+        print("\(res)")
+    
     }
 }
 
