@@ -25,21 +25,16 @@ struct EditUserView: View {
             VStack {
                 ScrollView{
                     MyTextField(title: "Firstname", text: $firstName)
-                        .textContentType(.givenName)
                         .keyboardType(.namePhonePad)
                     MyTextField(title: "Lastname", text: $lastName)
-                        .textContentType(.givenName)
                         .keyboardType(.namePhonePad)
                     MyTextField(title: "Phone", text: $phone)
-                        .textContentType(.telephoneNumber)
                         .keyboardType(.phonePad)
                     MyTextField(title: "Email", text: $email)
-                        .textContentType(.emailAddress)
                         .keyboardType(.emailAddress)
                     MyTextField(title: "Age", text: $age)
                         .keyboardType(.numberPad)
                     MyTextField(title: "Username", text: $username)
-                        .textContentType(.username)
                     MyTextField(title: "Password", text: $password)
                         
                     Spacer()
@@ -47,13 +42,15 @@ struct EditUserView: View {
                         .navigationBarItems(trailing:
                             DoneButton {
                                 print("Muokattu")
-                                putUser(parms: [firstName: firstName,
-                                                lastName: lastName,
-                                                phone: phone,
-                                                email: email,
-                                                age: "\(age)",
-                                                username: username,
-                                                password: password], userID: user!.id)
+                                if let intAge = Int(age) {
+                                    putUser(parms: ["firstName": firstName,
+                                                    "lastName": lastName,
+                                                    "phone": phone,
+                                                    "email": email,
+                                                    "age": intAge,
+                                                    "username": username,
+                                                    "password": password], userID: user!.id)
+                                }
                             
                             }
                             

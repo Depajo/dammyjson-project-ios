@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct AddUserView: View {
     @Environment(\.colorScheme) var colorScheme
@@ -22,28 +23,34 @@ struct AddUserView: View {
             VStack {
                 ScrollView {
                     MyTextField(title: "Firstname", text: $firstName)
-                        .textContentType(.givenName)
                         .keyboardType(.namePhonePad)
                     MyTextField(title: "Lastname", text: $lastName)
-                        .textContentType(.givenName)
                         .keyboardType(.namePhonePad)
                     MyTextField(title: "Phone", text: $phone)
-                        .textContentType(.telephoneNumber)
                         .keyboardType(.phonePad)
                     MyTextField(title: "Email", text: $email)
-                        .textContentType(.emailAddress)
                         .keyboardType(.emailAddress)
                     MyTextField(title: "Age", text: $age)
                         .keyboardType(.numberPad)
                     MyTextField(title: "Username", text: $username)
-                        .textContentType(.username)
                     MyTextField(title: "Password", text: $password)
-                        .textContentType(.password)
+
                     Spacer()
                         .navigationTitle("Add user")
                         .navigationBarItems(trailing:
                             DoneButton {
                                 print("Lisätty")
+                                if let intAge = Int(age) {
+                                    addUser(parms: ["firstName": firstName,
+                                                     "lastName": lastName,
+                                                        "phone": phone,
+                                                        "email": email,
+                                                         "age": intAge,
+                                                     "username": username,
+                                                     "password": password])
+                                } else {
+                                    print("Age is not int")
+                                }
                             }
                         )
                 }
@@ -54,6 +61,15 @@ struct AddUserView: View {
     }
 }
 
+func addUser(parms: Parameters) {
+    let fetch = FetchTools()
+    let url = URLComponents(string: "https://dummyjson.com/users/add")!
+    
+    fetch.postData(url: url, parameters: parms) { res in
+        print("\(res)")
+    
+    }
+}
 
 
 struct AddUserView_Previews: PreviewProvider {
