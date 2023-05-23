@@ -35,7 +35,7 @@ func validateEmail(_ email: String) -> Bool {
 
 func validateAge(_ age: String) -> Bool {
     if let intAge = Int(age) {
-        return intAge >= 18 && intAge <= 120
+        return intAge >= 0 && intAge <= 120
     }
     return false
 }
