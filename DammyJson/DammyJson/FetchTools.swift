@@ -22,9 +22,11 @@ class FetchTools {
         }
     }
     
-    func postData(url: URLComponents, parameters: Parameters, callback: @escaping (User) -> Void) {
+    func postData(url: URLComponents, parameters: Parameters,
+                  callback: @escaping (User) -> Void) {
         print(parameters)
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
+        AF.request(url, method: .post, parameters: parameters,
+                   encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
             switch response.result {
             case .success(let responseData):
                 print("Sending")
@@ -38,7 +40,8 @@ class FetchTools {
     
     func putData(url: URLComponents, parameters: Parameters, callback: @escaping (User) -> Void) {
         print(parameters)
-        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
+        AF.request(url, method: .put, parameters: parameters,
+                   encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
             switch response.result {
             case .success(let responseData):
                 print("Sending")
@@ -50,8 +53,10 @@ class FetchTools {
         }
     }
     
-    func deleteData(url: URLComponents, parameters: Parameters, callback: @escaping (User) -> Void) {
-        AF.request(url.url!, method: .delete, parameters: parameters, encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
+    func deleteData(url: URLComponents,
+                    parameters: Parameters,callback: @escaping (User) -> Void) {
+        AF.request(url.url!, method: .delete, parameters: parameters,
+                   encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in
                 switch response.result {
                 case .success(let responseData):
                     callback(responseData)
