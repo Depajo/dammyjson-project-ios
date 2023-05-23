@@ -17,42 +17,49 @@ struct AddUserView: View {
     @State var age: String = ""
     @State var username: String = ""
     @State var password: String = ""
+    @State var errorValidate: Bool = false
 
     var body: some View {
         NavigationStack {
             VStack {
                 ScrollView {
-                    MyTextField(title: "Firstname", text: $firstName)
+                    MyTextField(validation: validateFirstName("\(firstName)"), title: "Firstname", text: $firstName)
                         .keyboardType(.namePhonePad)
-                    MyTextField(title: "Lastname", text: $lastName)
+                    MyTextField(validation: validateLastName("\(lastName)"), title: "Lastname", text: $lastName)
                         .keyboardType(.namePhonePad)
-                    MyTextField(title: "Phone", text: $phone)
+                    MyTextField(validation: validatePhoneNumber("\(phone)"), title: "Phone", text: $phone)
                         .keyboardType(.phonePad)
-                    MyTextField(title: "Email", text: $email)
+                    MyTextField(validation: validateEmail("\(email)"), title: "Email", text: $email)
                         .keyboardType(.emailAddress)
-                    MyTextField(title: "Age", text: $age)
+                    MyTextField(validation: validateAge("\(age)"), title: "Age", text: $age)
                         .keyboardType(.numberPad)
-                    MyTextField(title: "Username", text: $username)
-                    MyTextField(title: "Password", text: $password)
+                    MyTextField(validation: validateUsername("\(username)"), title: "Username", text: $username)
+                    MyTextField(validation: validatePassword("\(password)"), title: "Password", text: $password)
 
                     Spacer()
                         .navigationTitle("Add user")
                         .navigationBarItems(trailing:
+                            
                             DoneButton {
-                                print("Lisätty")
-                                if let intAge = Int(age) {
-                                    addUser(parms: ["firstName": firstName,
-                                                     "lastName": lastName,
-                                                        "phone": phone,
-                                                        "email": email,
-                                                         "age": intAge,
-                                                     "username": username,
-                                                     "password": password])
-                                } else {
-                                    print("Age is not int")
-                                }
-                            }
+                                addUser(parms: ["firstName": firstName,
+                                                 "lastName": lastName,
+                                                    "phone": phone,
+                                                    "email": email,
+                                                     "age": Int(age)!,
+                                                 "username": username,
+                                                 "password": password]
+                                )
+                                
+                            }.disabled(!validateFields(firstName: firstName,
+                                                      lastName: lastName,
+                                                      phoneNumber: phone,
+                                                      email: email,
+                                                      age: age,
+                                                      username: username,
+                                                      password: password))
+                            
                         )
+                        
                 }
             }
             .background(Color(colorScheme == .dark ? UIColor.black : UIColor.systemGray6))
