@@ -53,16 +53,9 @@ func validateEmail(_ email: String) -> Bool {
 }
 
 func validateAge(_ age: String) -> Bool {
-    
-    do {
-        let regex = try Regex("^[0-9]{1,3}$")
-        if let intAge = Int(age) {
-            return age.contains(regex) && intAge > 0 && intAge < 120
-        }
-    } catch {
-        print("Caught an error: \(error)")
+    if let intAge = Int(age) {
+        return intAge > 0 && intAge < 120
     }
-    
     return false
 }
 
