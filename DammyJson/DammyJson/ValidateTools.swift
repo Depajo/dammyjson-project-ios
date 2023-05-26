@@ -5,45 +5,75 @@
 //  Created by Joonatan De Pascale on 23.5.2023.
 //
 
-// Used ChatGPT for create good regex
-
 import Foundation
 
 func validateFirstName(_ firstName: String) -> Bool {
-    let regex = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
-    let firstNamePredicate = NSPredicate(format: "SELF MATCHES %@", regex)
-    return firstNamePredicate.evaluate(with: firstName)
+    do {
+        let regex = try Regex("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")
+        return firstName.contains(regex) &&
+                    firstName.count > 1 &&
+                    firstName.count < 25
+    } catch {
+        print("Caught an error: \(error)")
+    }
+    
+    return false
 }
 
 func validateLastName(_ lastName: String) -> Bool {
-    let regex = "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
-    let lastNamePredicate = NSPredicate(format: "SELF MATCHES %@", regex)
-    return lastNamePredicate.evaluate(with: lastName)
-}
-
-func validatePhoneNumber(_ phoneNumber: String) -> Bool {
-    let regex = #"^\+?(\d{1,3})?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$"#
-    let phoneNumberPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
-    return phoneNumberPredicate.evaluate(with: phoneNumber)
-}
-
-func validateEmail(_ email: String) -> Bool {
-    let regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
-    let emailPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
-    return emailPredicate.evaluate(with: email)
-}
-
-func validateAge(_ age: String) -> Bool {
-    if let intAge = Int(age) {
-        return intAge >= 0 && intAge <= 120
+    do {
+        let regex = try Regex("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$")
+        return lastName.contains(regex) &&
+                lastName.count > 1 &&
+                lastName.count < 25
+    } catch {
+        print("Caught an error: \(error)")
     }
     return false
 }
 
+func validatePhoneNumber(_ phoneNumber: String) -> Bool {
+    do {
+        let regex = try Regex(#"^\+?(\d{1,3})?[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$"#)
+        return phoneNumber.contains(regex)
+    } catch {
+        print("Caught an error: \(error)")
+    }
+    return false
+}
+
+func validateEmail(_ email: String) -> Bool {
+    do {
+        let regex = try Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
+        return email.contains(regex)
+    } catch {
+        print("Caught an error: \(error)")
+    }
+    return false
+}
+
+func validateAge(_ age: String) -> Bool {
+    
+    do {
+        let regex = try Regex("^[0-9]{1,3}$")
+        if let intAge = Int(age) {
+            return age.contains(regex) && intAge > 0 && intAge < 120
+        }
+    } catch {
+        print("Caught an error: \(error)")
+    }
+    
+    return false
+}
+
 func validateUsername(_ username: String) -> Bool {
-    let regex = "^[a-zA-Z0-9]{3,}$"
-    let usernamePredicate = NSPredicate(format: "SELF MATCHES %@", regex)
-    return usernamePredicate.evaluate(with: username)
+    do {
+        let regex = try Regex("^[a-zA-Z0-9_]{2,25}$")
+        return username.contains(regex)
+    } catch {
+        print("Caught an error: \(error)")
+    }
+    return false
 }
 
 func validatePassword(_ password: String) -> Bool {
