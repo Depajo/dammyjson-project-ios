@@ -83,7 +83,9 @@ struct EditUserView: View {
                         )
                 }
             }
-            .background(Color(colorScheme == .dark ? UIColor.black : UIColor.systemGray6))
+            .background(Color(colorScheme == .dark ?
+                              UIColor.black :
+                                UIColor.systemGray6))
             .onAppear() {
                 if let u = user {
                     firstName = u.firstName

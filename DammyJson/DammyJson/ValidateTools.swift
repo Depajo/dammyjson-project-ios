@@ -50,7 +50,8 @@ func validateLastName(_ lastName: String) -> Bool {
 
 /// Validate the phone number field.
 ///
-/// Use `validatePhoneNumber` to validate a phone number by checking if it matches the specified regular expression pattern.
+/// Use `validatePhoneNumber` to validate a phone number by checking if it matches the specified
+/// regular expression pattern.
 ///
 /// - Parameter phoneNumber: The phone number string to validate.
 /// - Returns: `true` if the phone number is valid, `false` otherwise.
@@ -66,7 +67,8 @@ func validatePhoneNumber(_ phoneNumber: String) -> Bool {
 
 /// Validate the email field.
 ///
-/// Use `validateEmail` to validate an email address by checking if it matches the specified regular expression pattern.
+/// Use `validateEmail` to validate an email address by checking if it matches the specified regular
+/// expression pattern.
 /// - Contains characters before and after "@" symbol
 /// - Contains a dot (" . ") after the "@" symbol followed by at least two characters.
 ///
@@ -97,7 +99,8 @@ func validateAge(_ age: String) -> Bool {
 
 /// Validate the username field.
 ///
-/// Use `validateUsername` to validate a username by checking if it matches the specified regular expression pattern.
+/// Use `validateUsername` to validate a username by checking if it matches the specified regular
+/// expression pattern.
 /// - Contains only alphabetic characters, numbers, underscores and it length is between 2 and 25.
 ///
 /// - Parameter username: The username string to validate.
@@ -129,7 +132,8 @@ func validatePassword(_ password: String) -> Bool {
 
 /// Validate all input fields.
 ///
-/// Use `validateFields` to validate all input fields by calling the individual validation functions for each field.
+/// Use `validateFields` to validate all input fields by calling the individual validation functions for
+/// each field.
 ///
 /// - Parameters:
 ///   - firstName: The first name string to validate.
@@ -140,8 +144,9 @@ func validatePassword(_ password: String) -> Bool {
 ///   - username: The username string to validate.
 ///   - password: The password string to validate.
 /// - Returns: `true` if all fields are valid, `false` otherwise.
-func validateFields(firstName: String, lastName: String, phoneNumber: String,email:
-                    String, age: String, username: String, password: String) -> Bool {
+func validateFields(firstName: String, lastName: String,
+                    phoneNumber: String,email: String, age: String,
+                    username: String, password: String) -> Bool {
     let isFirstNameValid = validateFirstName(firstName)
     let isLastNameValid = validateLastName(lastName)
     let isPhoneNumberValid = validatePhoneNumber(phoneNumber)

@@ -10,7 +10,8 @@ import Alamofire
 
 class FetchTools {
     
-    /// Fetch data from a specified URL using a GET request and and decode the response into a `User` object.
+    /// Fetch data from a specified URL using a GET request and and decode the response into a `User`
+    /// object.
     ///
     /// Use `getData` to make a request to the specified URL and retrieve data.
     /// The retrieved data is then decoded into a `Users` object and passed
@@ -70,7 +71,8 @@ class FetchTools {
     ///   - parameters: The parameters to be sent in the request body.
     ///   - callback: The closure to be called when the response is received and decoded
     ///   successfully. It receives the decoded `User` object as a parameter.
-    func putData(url: URLComponents, parameters: Parameters, callback: @escaping (User) -> Void) {
+    func putData(url: URLComponents,
+                 parameters: Parameters, callback: @escaping (User) -> Void) {
         print(parameters)
         AF.request(url, method: .put, parameters: parameters,
                    encoding: JSONEncoding.default).responseDecodable(of: User.self) { response in

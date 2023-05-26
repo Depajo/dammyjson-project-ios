@@ -23,12 +23,18 @@ struct UserView: View {
             NavigationStack {
                 VStack {
                     Spacer()
-                    TextAreaWithLabel(label: "Name:", text: "\(user.firstName) \(user.firstName)")
-                    TextAreaWithLabel(label: "Phone:", text: "\(user.phone)")
-                    TextAreaWithLabel(label: "Email:", text: "\(user.email)")
-                    TextAreaWithLabel(label: "Age:", text: "\(user.age)")
-                    TextAreaWithLabel(label: "Username:", text: "\(user.username)")
-                    TextAreaWithLabel(label: "Password:", text: "\(user.password)")
+                    TextAreaWithLabel(label: "Name:",
+                                      text: "\(user.firstName) \(user.firstName)")
+                    TextAreaWithLabel(label: "Phone:",
+                                      text: "\(user.phone)")
+                    TextAreaWithLabel(label: "Email:",
+                                      text: "\(user.email)")
+                    TextAreaWithLabel(label: "Age:",
+                                      text: "\(user.age)")
+                    TextAreaWithLabel(label: "Username:",
+                                      text: "\(user.username)")
+                    TextAreaWithLabel(label: "Password:",
+                                      text: "\(user.password)")
                         .navigationTitle("User")
                         .navigationBarItems(trailing:
                                 NavigationLink(destination: EditUserView(user: user)) {

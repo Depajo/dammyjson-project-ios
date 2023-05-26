@@ -9,7 +9,8 @@ import SwiftUI
 
 /// `ContentView` is a SwiftUI view that displays a list of users.
 ///
-/// This view contains a search bar for searching users, a list of users, and a navigation bar button for adding new users.
+/// This view contains a search bar for searching users, a list of users, and a navigation bar button for adding
+/// new users.
 struct ContentView: View {
     /// The list of users displayed in the view.
     @State var users: Users?
