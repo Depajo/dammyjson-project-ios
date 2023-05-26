@@ -8,16 +8,30 @@
 import SwiftUI
 import Alamofire
 
+/// A view component for editing user information.
+///
+/// Use `EditUserView` to edit user information such as first name, last name, phone,
+///  email, age, username, and password.
 struct EditUserView: View {
+    /// The user to be edited.
     var user: User?
+    /// The color scheme environment variable.
     @Environment(\.colorScheme) var colorScheme
+    /// The state variable for the first name.
     @State var firstName: String = ""
+    /// The state variable for the last name.
     @State var lastName: String = ""
+    /// The state variable for the phone number.
     @State var phone: String = ""
+    /// The state variable for the email address.
     @State var email: String = ""
+    /// The state variable for the age.
     @State var age: String = ""
+    /// The state variable for the username.
     @State var username: String = ""
+    /// The state variable for the password.
     @State var password: String = ""
+    /// The state variable for error validation.
     @State var errorValidate: Bool = false
     
     var body: some View {
@@ -86,20 +100,16 @@ struct EditUserView: View {
     }
 }
 
-func validateFields(firstName: String, lastName: String, phoneNumber: String,email:
-                    String, age: String, username: String, password: String) -> Bool {
-    let isFirstNameValid = validateFirstName(firstName)
-    let isLastNameValid = validateLastName(lastName)
-    let isPhoneNumberValid = validatePhoneNumber(phoneNumber)
-    let isEmailValid = validateEmail(email)
-    let isAgeValid = validateAge(age)
-    let isUsernameValid = validateUsername(username)
-    let isPasswordValid = validatePassword(password)
-    
-    return isFirstNameValid && isLastNameValid && isPhoneNumberValid &&
-        isEmailValid && isAgeValid && isUsernameValid && isPasswordValid
-}
-
+/// Update user information on API.
+///
+///  Use `putUser` to update a user on the server with the specified parameters and user ID.
+///  The function sends a PUT request to the server using the `putData` method
+///  of the `FetchTools` class. The response from the server is printed.
+///  The function does not return any value.
+///
+/// - Parameters:
+///   - parms: The parameters to be sent in the request body.
+///   - userID: The ID of the user to be updated.
 func putUser(parms: Parameters, userID: Int) {
     let fetch = FetchTools()
     let url = URLComponents(string: "https://dummyjson.com/users/\(userID)")!
@@ -110,12 +120,21 @@ func putUser(parms: Parameters, userID: Int) {
     }
 }
 
+/// A view component for deleting a user.
+///
+/// Use `DeleteButton` to provide a button for deleting a user. When the button is pressed,
+/// it shows an alert to confirm the deletion. Once the deletion is completed, it navigates back to the
+/// ContentView.
 struct DeleteButton: View {
+    /// The presentation mode environment variable.
     @Environment(\.presentationMode) var presentationMode
+    /// The state variable for showing the alert.
     @State var showAlert = false
-    @State var deletatinComplited = false
-    var fetch = FetchTools()
+    /// The state variable for tracking if deletion is completed.
+    @State var deletionCompleted = false
+    /// The ID of the user to be deleted.
     var userId: Int
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -125,27 +144,45 @@ struct DeleteButton: View {
                     Alert(title: Text("Do you want delete user?"),
                           primaryButton: .cancel(),
                           secondaryButton: .destructive(Text("Delete")){
-                        if let url: URLComponents =
-                            URLComponents(
-                                string: "https://dummyjson.com/users/\(userId)") {
-                            fetch.deleteData(url: url,
-                                             parameters: ["id": userId]) { success in
-                                print("Delete \(success)")
-                                deletatinComplited = true
-                            }
-                        }
-                        
+                        deletionCompleted = deleteUser(userId: userId)
                     })
                     
                 }.foregroundColor(Color.red)
             }
-            .navigationDestination(isPresented: $deletatinComplited) {
+            .navigationDestination(isPresented: $deletionCompleted) {
                 ContentView()
             }
             .padding(.vertical, 20)
         }
         
     }
+}
+
+/// Delete a user with the specified user ID.
+///
+/// Use `deleteUser` to delete a user from the server with the specified user ID. The function
+/// sends a DELETE request to the server using the `deleteData` method of the `FetchTools` class.
+/// If the deletion is successful, it prints a success message. The function returns `true`
+/// if the deletion request was sent successfully, and `false` otherwise.
+///
+/// - Parameter userId: The ID of the user to delete.
+/// - Returns: `true` if the deletion request was sent successfully, `false` otherwise.
+func deleteUser(userId: Int) -> Bool {
+    let fetch = FetchTools()
+    
+    if let url: URLComponents =
+        URLComponents(string: "https://dummyjson.com/users/\(userId)") {
+        
+        fetch.deleteData(url: url, parameters: ["id": userId]) { success in
+            print("Delete \(success)")
+        }
+        
+        return true
+        
+    } else {
+        return false
+    }
+    
 }
 
 struct EditUserView_Previews: PreviewProvider {

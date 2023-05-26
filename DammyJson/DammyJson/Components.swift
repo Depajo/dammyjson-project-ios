@@ -8,8 +8,14 @@
 import Foundation
 import SwiftUI
 
+/// A view component for a "Done" button.
+///
+/// Use `DoneButton` to provide a button with a "Done" label.
+/// When the button is pressed, it performs the specified action and go back to the previous view.
 struct DoneButton: View {
+    /// The presentation mode environment variable.
     @Environment(\.presentationMode) var presentationMode
+    /// The action to be performed when the button is pressed.
     @State var action: () -> Void
     
     var body: some View {
@@ -21,10 +27,17 @@ struct DoneButton: View {
     }
 }
 
+/// A customized text field component.
+///
+/// Use `MyTextField` to display a text field with a customizable title and validation styling.
 struct MyTextField: View {
+    /// The color scheme environment variable.
     @Environment(\.colorScheme) var colorScheme
+    /// The validation status of the text field.
     var validation: Bool
+    /// The title of the text field.
     @State var title: String
+    /// The binding to the text value of the text field.
     @Binding var text: String
     
     var body: some View {
@@ -52,10 +65,15 @@ struct MyTextField: View {
     }
 }
 
+/// A view component for displaying a text area with label
+///
+/// Use `TextAreaWithLabel` to display a labeled text area with a customizable label and text content.
 struct TextAreaWithLabel: View {
+    /// The color scheme environment variable.
     @Environment(\.colorScheme) var colorScheme
-    
+    /// The label for the text area.
     var label: String
+    /// The text content for the text area.
     var text: String
     
     var body: some View {

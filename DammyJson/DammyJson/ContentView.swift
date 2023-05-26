@@ -7,19 +7,28 @@
 
 import SwiftUI
 
+/// `ContentView` is a SwiftUI view that displays a list of users.
+///
+/// This view contains a search bar for searching users, a list of users, and a navigation bar button for adding new users.
 struct ContentView: View {
+    /// The list of users displayed in the view.
     @State var users: Users?
+    /// The text entered in the search bar.
     @State var searchText: String = ""
     
     var body: some View {
         VStack {
             NavigationStack {
+                /// The search bar for searching users.
                 SearchBar(users: $users, searchText: $searchText, placeholder: "Search")
+                /// A view that is displayed when the user list is empty.
                 UserListIsEmpty(users: $users)
+                /// The list of users.
                 UserList(users: $users)
                     .navigationTitle("Users")
                     .navigationBarBackButtonHidden()
                     .navigationBarItems(trailing:
+                            /// A navigation link to the `AddUserView`.
                             NavigationLink(destination: AddUserView()) {
                                 Image(systemName: "plus")
                             }
@@ -29,7 +38,11 @@ struct ContentView: View {
     }
 }
 
+/// A view component that displays a message when user data is empty.
+///
+/// Use `UserListIsEmpty` to show a message when the user data is empty.
 struct UserListIsEmpty: View {
+    /// The binding to the user data.
     @Binding var users: Users?
     var body: some View {
         if let usersData = users {
@@ -41,8 +54,13 @@ struct UserListIsEmpty: View {
     }
 }
 
+/// A view component that displays a list of users and fetches user data from API.
+///
+/// Use `UserList` to display a list of users and fetch user data from API.
 struct UserList: View {
+    /// The fetch tool for retrieving user data from API.
     var fetch = FetchTools()
+    /// The binding to the user data.
     @Binding var users: Users?
     var body: some View {
         VStack {
@@ -71,11 +89,19 @@ struct UserList: View {
     }
 }
 
+/// A view component that displays a search bar and fetches user data based on the search text.
+///
+/// Use `SearchBar` to provide a search bar for filtering user data and fetching data from API.
 struct SearchBar: View {
+    /// The fetch tool for retrieving user data from API.
     var fetch = FetchTools()
+    /// The binding to the user data.
     @Binding var users: Users?
+    /// The binding to the search text.
     @Binding var searchText: String
+    /// The placeholder text for the search bar.
     var placeholder: String
+    
     var body: some View {
         TextField(placeholder, text: $searchText)
             .onChange(of: searchText) { newText in
@@ -102,8 +128,6 @@ struct SearchBar: View {
             .frame(alignment: .center)
             .background(Color(UIColor.systemGray6).cornerRadius(20))
             .padding(10)
-        
-        
     }
 }
 

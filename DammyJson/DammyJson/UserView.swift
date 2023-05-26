@@ -7,9 +7,16 @@
 
 import SwiftUI
 
+/// A view component for displaying user information.
+///
+/// Use `UserView` to display information about a user,
+/// such as their name, phone number, email address, age, username, and password.
 struct UserView: View {
+    /// The color scheme environment variable.
     @Environment(\.colorScheme) var colorScheme
+    /// The user object to display information for.
     @State var user: User!
+    
     var body: some View {
         
         if (user != nil) {
