@@ -19,6 +19,7 @@
 		FE90716A2A14FE5300782F5F /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9071692A14FE5300782F5F /* EditUserView.swift */; };
 		FE90716C2A14FE6A00782F5F /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90716B2A14FE6A00782F5F /* AddUserView.swift */; };
 		FE90716E2A15055800782F5F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE90716D2A15055800782F5F /* Components.swift */; };
+		FEB3554B2A1CE3640016F6F2 /* ValidateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB3554A2A1CE3640016F6F2 /* ValidateTools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FE9071692A14FE5300782F5F /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
 		FE90716B2A14FE6A00782F5F /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
 		FE90716D2A15055800782F5F /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		FEB3554A2A1CE3640016F6F2 /* ValidateTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateTools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				FE9071692A14FE5300782F5F /* EditUserView.swift */,
 				FE90716B2A14FE6A00782F5F /* AddUserView.swift */,
 				FE90716D2A15055800782F5F /* Components.swift */,
+				FEB3554A2A1CE3640016F6F2 /* ValidateTools.swift */,
 			);
 			path = DammyJson;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				FE06AEA82A1372E900F3861C /* Users.swift in Sources */,
 				FE06AEAC2A13E10B00F3861C /* UserView.swift in Sources */,
 				FE06AE952A136D7B00F3861C /* ContentView.swift in Sources */,
+				FEB3554B2A1CE3640016F6F2 /* ValidateTools.swift in Sources */,
 				FE06AEA12A13710700F3861C /* FetchTools.swift in Sources */,
 				FE90716A2A14FE5300782F5F /* EditUserView.swift in Sources */,
 				FE06AEAA2A1376E700F3861C /* User.swift in Sources */,

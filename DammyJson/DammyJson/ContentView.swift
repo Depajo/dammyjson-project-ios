@@ -48,15 +48,11 @@ struct UserList: View {
         VStack {
             List {
                 if let usersData: Users = users {
-                    
-            
                     ForEach(usersData.users.sorted { $0.firstName < $1.firstName }, id: \.id) { user in
                         NavigationLink(destination: UserView(user: user)) {
                             Text("\(user.firstName) \(user.lastName)")
                                 .padding(.vertical, 5)
-//                                .font(.system(size: 20))
                         }
-                        
                     }
                 } else {
                     ProgressView()
@@ -68,7 +64,6 @@ struct UserList: View {
                 if let url = URLComponents(string: "https://dummyjson.com/users?limit=0") {
                     fetch.getData(url: url) { data in
                         users = data
-//                        print(data)
                     }
                 }
             }
