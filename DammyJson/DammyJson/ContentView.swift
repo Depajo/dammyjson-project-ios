@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             NavigationStack {
-                SearchBar(users: $users, searchText: $searchText, placeholder: "Hae")
+                SearchBar(users: $users, searchText: $searchText, placeholder: "Search")
                 UserListIsEmpty(users: $users)
                 UserList(users: $users)
                     .navigationTitle("Users")
