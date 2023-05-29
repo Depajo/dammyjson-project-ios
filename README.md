@@ -18,6 +18,11 @@ This mobile application is developed for Android with Kotlin programming languag
 2. Open the project in Android Studio or Xcode
 3. Run the project
 
+## Review
+
+Here is the review on this project:
+Youtube: https://youtu.be/UEmeaUnc5O4
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
