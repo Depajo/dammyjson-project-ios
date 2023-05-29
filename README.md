@@ -20,8 +20,7 @@ This mobile application is developed for Android with Kotlin programming languag
 
 ## Review
 
-Here is the review on this project:
-Youtube: https://youtu.be/UEmeaUnc5O4
+Here is the review on this project: <br />Youtube: https://youtu.be/UEmeaUnc5O4
 
 ## License
 
