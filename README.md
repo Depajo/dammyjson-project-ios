@@ -2,7 +2,7 @@
 
 ## Description
 
-This mobile application is developed for Android with Kotlin programming language and for iOS with Swift programming language. The purpose of the application is to fetch a list of persons and show it to the user in the application's. This application uses DammyJson data and its backend.
+This mobile application is developed for Android with Kotlin programming language and for iOS with Swift programming language. The purpose of the application is to fetch a list of persons and show it to the user in the application's. This application uses [DammyJson](https://dummyjson.com) data and its also backend.
 
 ## Features:
 
